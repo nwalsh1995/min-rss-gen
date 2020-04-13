@@ -4,10 +4,12 @@ A minimal RSS 2.0 generator. Follows guidelines from https://validator.w3.org/fe
 # XML Implementations
 Accepts any implementation that fulfills Python's ElementTree API. Due to this, `lxml` is supported. 
 
-# Usage
+# Installation
 ```
 ~ pip install min-rss
 ```
+
+# Usage
 
 The following script powers the RSS feed at https://nwalsh1995.github.io/rss.xml
 
