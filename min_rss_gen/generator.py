@@ -64,6 +64,17 @@ def gen_text_input(title: str, description: str, name: str, link: str, etree=DEF
     return TextInputElement(text_input)
 
 
+def gen_category(category: str, domain: Optional[str] = None, etree=DEFAULT_ETREE) -> CategoryElement:
+    element = etree.Element("category")
+
+    if domain is not None:
+        element.attrib["domain"] = domain
+
+    element.text = category
+
+    return CategoryElement(element)
+
+
 def gen_item(
     title: Optional[str] = None,
     link: Optional[str] = None,
@@ -125,10 +136,6 @@ def gen_source(text: str, url: str, etree=DEFAULT_ETREE) -> SourceElement:
     return SourceElement(source)
 
 
-# TODO: Gen source
-# TODO: Gen category
-
-
 def start_rss(
     title: str,
     link: str,
@@ -159,6 +166,9 @@ def start_rss(
     # Remove elements that we are handling specifically.
     args.pop("etree")
     args.pop("items")
+    args.pop("title")
+    args.pop("link")
+    args.pop("description")
 
     rss = etree.Element("rss", version="2.0")
     channel = etree.SubElement(rss, "channel")
@@ -185,18 +195,3 @@ def start_rss(
             channel.append(item)
 
     return rss
-
-
-import lxml.etree  # noqa: E402
-
-xml.etree.ElementTree.dump(
-    start_rss(
-        "my own title",
-        "my link",
-        "my description",
-        ttl=60,
-        image=gen_image(url="https://url.test/image.gif", title="image title", link="https://url.test/"),
-        items=[gen_item(title="my item")],
-    )
-)
-xml.etree.ElementTree.dump(start_rss("my own title", "my link", "my description", etree=lxml.etree))
