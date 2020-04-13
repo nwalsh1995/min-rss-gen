@@ -6,7 +6,7 @@ Accepts any implementation that fulfills Python's ElementTree API. Due to this, 
 
 # Installation
 ```
-~ pip install min-rss
+pip install min-rss
 ```
 
 # Usage
