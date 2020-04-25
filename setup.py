@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="min-rss",
-    version="0.0.2",
+    version="0.0.3",
     author="Nathan Walsh",
     author_email="nwalsh1995@gmail.com",
     description="A correct and minimal RSS 2.0 generator.",
