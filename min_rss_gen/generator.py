@@ -110,7 +110,7 @@ def gen_category(
 def not_none(
     *elements: Iterable[Optional[DEFAULT_ETREE.Element]],
 ) -> Generator[DEFAULT_ETREE.Element, None, None]:
-    yield (e for e in elements if e is not None)
+    yield e for e in elements if e is not None
 
 
 def validate_either(*args, msg=None) -> None:
